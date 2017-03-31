@@ -1,0 +1,70 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: damien
+ * Date: 31/03/17
+ * Time: 15:30
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="article")
+ */
+class Article
+{
+    use TimestampableEntity;
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status = 0;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     */
+    private $publishedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Theme")
+     * @ORM\JoinColumn(name="theme_id", referencedColumnName="id")
+     */
+    private $theme;
+
+    /**
+     * @var ArrayCollection $pictures
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Picture", mappedBy="article", cascade={"all"})
+     */
+    private $pictures;
+}

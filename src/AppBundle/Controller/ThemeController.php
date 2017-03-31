@@ -49,8 +49,9 @@ class ThemeController extends Controller
         if ($id == null) {
             $theme = new Theme();
         }
-        $theme = $id;
-
+        else {
+            $theme = $id;
+        }
         $form = $this->createForm(ThemeType::class, $theme);
 
         $form->handleRequest($request);
