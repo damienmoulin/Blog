@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta charset="UTF-8"/>
+        <title>{% block title %}Blog{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="{{ asset('assets/css/bootstrap-select.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.default.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
     </head>
     <body>
         {% block body %}{% endblock %}
+        <script src="{{ asset('assets/js/jquery-1.11.1.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery-migrate-1.2.1.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.sparkline.min.js') }}"></script>
+        <script src="{{ asset('assets/js/toggles.min.js') }}"></script>
+        <script src="{{ asset('assets/js/retina.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.cookies.js') }}"></script>
+
+
+        <script src="{{ asset('assets/js/jquery.datatables.min.js') }}"></script>
+        <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+
+        <script src="{{ asset('assets/js/custom.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

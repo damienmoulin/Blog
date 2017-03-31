@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section>
+    {% include('admin/leftpanel.html.twig') %}
+    <div class="mainpanel">
+        <div class="contentpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_label(form.name) }}
+                            {{ form_widget(form.name) }}
+                        </div>
+                    <input type="submit" class="btn btn-success">
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

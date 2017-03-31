@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+    {% include('admin/leftpanel.html.twig') %}
+
+        <div class="mainpanel">
+            <div class="contentpanel">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="subtitle mb5">Themes</h5>
+                        <p class="mb20">List des themes </p>
+                        <div class="table-responsive">
+                            <table class="table mb30">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Theme</th>
+                                    <th><a class="label label-info" href="{{ path('app_theme_add') }}">Ajouter</a></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for theme in themes %}
+                                <tr>
+                                    <td>{{ theme.id }}</td>
+                                    <td>{{ theme.name }}</td>
+                                    <td>
+                                        <a class="label label-warning" href="{{ path('app_theme_add', { 'id' : theme.id }) }}">Editer</a>
+                                        <a class="label label-danger" href="{{ path('app_theme_delete', { 'id' : theme.id }) }}">supprimer</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
