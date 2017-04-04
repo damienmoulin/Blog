@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+    {% include('admin/leftpanel.html.twig') %}
+    <div class="mainpanel">
+        <div class="contentpanel">
+            <div class="row">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Date de création</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for article in articles %}
+                            <tr>
+                                <td>{{ article.id }}</td>
+                                <td>{{ article.title }}</td>
+                                <td>
+                                    {% if article.status == 1 %}
+                                        <span class="label label-warning">Brouillon</span>
+                                    {% else %}
+                                        <span class="label label-success">Publié</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ article.createdAt|date('d/m/y') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </section>
+{% endblock %}

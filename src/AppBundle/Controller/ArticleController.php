@@ -22,6 +22,21 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ArticleController extends Controller
 {
+
+    /**
+     * @param Request $request
+     * @Route("/", name="app_admin_article_index")
+     */
+    public function indexAction(Request $request)
+    {
+        $articles = $this->getDoctrine()->getRepository('AppBundle:Article')->findAll();
+
+        return $this->render(':admin/article:index.html.twig',
+            [
+                'articles' => $articles
+            ]);
+    }
+
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -44,7 +59,7 @@ class ArticleController extends Controller
             $article->setCreatedAt(new \DateTime());
             $article->setUpdatedAt(new \DateTime());
             $article->Draft();
-            
+
             $em->persist($article);
 
             foreach ( $article->getPictures() as $picture) {
