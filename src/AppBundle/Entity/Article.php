@@ -242,13 +242,13 @@ class Article
 
     public function Draft()
     {
-        $this->status = 0;
+        $this->setStatus(0);
         return $this;
     }
 
     public function Publish()
     {
-        $this->status = 1;
+        $this->setStatus(1);
         return $this;
     }
 

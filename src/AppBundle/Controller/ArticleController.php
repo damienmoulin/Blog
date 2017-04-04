@@ -77,4 +77,35 @@ class ArticleController extends Controller
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @param Article $article
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/draft/{id}", name="app_admin_article_draft")
+     */
+    public function draftAction(Article $article)
+    {
+        $article->Draft();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($article);
+        $em->flush();
+
+       return $this->redirectToRoute('app_admin_article_index');
+    }
+
+    /**
+     * @param Article $article
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/publish/{id}", name="app_admin_article_publish")
+     */
+    public function publishAction(Article $article)
+    {
+        $article->Publish();
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($article);
+        $em->flush();
+
+        return $this->redirectToRoute('app_admin_article_index');
+    }
 }

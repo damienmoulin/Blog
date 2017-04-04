@@ -21,10 +21,20 @@
                                 <td>{{ article.id }}</td>
                                 <td>{{ article.title }}</td>
                                 <td>
-                                    {% if article.status == 1 %}
-                                        <span class="label label-warning">Brouillon</span>
+                                    {% if article.status == 0%}
+                                        <div class="dropdown" style="display:inline">
+                                            <span data-toggle="dropdown" class="label label-warning"><span class="labeltext{{ article.id }}">Brouillon</span> <span class="caret"></span></span>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="link" href="{{ path('app_admin_article_publish', { 'id': article.id}) }}">Publier</a></li>
+                                            </ul>
+                                        </div>
                                     {% else %}
-                                        <span class="label label-success">Publié</span>
+                                        <div class="dropdown" style="display:inline">
+                                            <span data-toggle="dropdown" class="label label-success"><span class="labeltext{{ article.id }}">Publié</span> <span class="caret"></span></span>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="link" href="{{ path('app_admin_article_draft', { 'id': article.id}) }}">Mettre en Brouillon</a></li>
+                                            </ul>
+                                        </div>
                                     {% endif %}
                                 </td>
                                 <td>{{ article.createdAt|date('d/m/y') }}</td>
