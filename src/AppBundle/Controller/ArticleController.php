@@ -108,4 +108,17 @@ class ArticleController extends Controller
 
         return $this->redirectToRoute('app_admin_article_index');
     }
+
+    /**
+     * @param Article $article
+     * @return Response
+     * @Route("/{id}", name="app_admin_article_detail")
+     */
+    public function detailAction(Article $article)
+    {
+        return $this->render(':admin/article:detail.html.twig',
+            [
+                'article' => $article
+            ]);
+    }
 }

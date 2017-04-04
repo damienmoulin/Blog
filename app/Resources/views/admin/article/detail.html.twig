@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section>
+    {% include('admin/leftpanel.html.twig') %}
+    <div class="mainpanel">
+        <div class="contentpanel">
+            <div class="row">
+                <h3>{{ article.title }}</h3>
+                
+                <p>{{ article.description }}</p>
+
+                {% for picture in article.pictures %}
+                    <p>{{ picture.filename }}</p>
+                    <img src="{{ asset('upload/'~ picture.filename) }}" alt="">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
