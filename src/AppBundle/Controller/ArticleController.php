@@ -41,19 +41,21 @@ class ArticleController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
+            $article->setCreatedAt(new \DateTime());
+            $article->setUpdatedAt(new \DateTime());
+            $article->Draft();
+            
             $em->persist($article);
 
             foreach ( $article->getPictures() as $picture) {
                 $filename = sha1(uniqid(mt_rand(), true)).'.jpeg';
                 $picture->setFilename($filename);
-                dump($picture);
-                //$picture->getMedia()->move($this->getParameter('picture_directory'), $filename);
+                $picture->getMedia()->move($this->getParameter('picture_directory'), $filename);
             }
 
+            $em->flush();
 
-            //$em->flush();
-
-            //return $this->redirectToRoute('app_admin_article_add');
+            return $this->redirectToRoute('app_admin_article_add');
         }
 
         return $this->render(':admin/article:add.html.twig', [

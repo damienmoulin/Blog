@@ -239,4 +239,27 @@ class Article
     {
         return $this->pictures;
     }
+
+    public function Draft()
+    {
+        $this->status = 0;
+        return $this;
+    }
+
+    public function Publish()
+    {
+        $this->status = 1;
+        return $this;
+    }
+
+    public function isPublish()
+    {
+        if ($this->status)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

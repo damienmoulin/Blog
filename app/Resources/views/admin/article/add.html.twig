@@ -20,8 +20,8 @@
                             {{ form_label(form.theme) }}
                             {{ form_widget(form.theme) }}
                         </div>
-                        <div class="musicform"><h3>Pictures</h3></div>
-                        <ul class="musics" data-prototype="{{ form_widget(form.pictures.vars.prototype)|e('html_attr') }}">
+                        <div class="pictureform"><h3>Pictures</h3></div>
+                        <ul class="pictures" data-prototype="{{ form_widget(form.pictures.vars.prototype)|e('html_attr') }}">
                             {% for picture in form.pictures %}
                                 <li>{{ form_row(picture.media) }}</li>
                             {% endfor %}
@@ -41,12 +41,12 @@
         var $collectionHolder;
 
         // setup an "add a tag" link
-        var $addMusicLink = $('<a href="#" class="add_music_link">Add a Music</a>');
-        var $newLink = $('.musicform').append($addMusicLink);
+        var $addMusicLink = $('<a href="#" class="add_picture_link">Ajouter une image</a>');
+        var $newLink = $('.pictureform').append($addMusicLink);
 
         jQuery(document).ready(function() {
             // Get the ul that holds the collection of tags
-            $collectionHolder = $('ul.musics');
+            $collectionHolder = $('ul.pictures');
 
             console.log($collectionHolder);
             // add the "add a tag" anchor and li to the tags ul
@@ -93,7 +93,7 @@
         }
 
         function addTagFormDeleteLink($tagFormLi) {
-            var $removeFormA = $('<tr><td><a href="#">delete this music</a></td></tr>');
+            var $removeFormA = $('<tr><td><a href="#">delete this picture</a></td></tr>');
             $tagFormLi.append($removeFormA);
 
             $removeFormA.on('click', function(e) {
