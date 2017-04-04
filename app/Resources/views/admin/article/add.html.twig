@@ -38,6 +38,13 @@
 {% endblock %}
 {% block javascripts %}
     <script>
+        $(function() {
+            $('textarea').froalaEditor()
+                    .on('froalaEditor.contentChanged', function (e, editor) {
+                        $('#preview').html(editor.html.get());
+                    })
+        });
+
         var $collectionHolder;
 
         // setup an "add a tag" link
